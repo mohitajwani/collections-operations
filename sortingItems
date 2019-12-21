@@ -1,0 +1,10 @@
+fun main() {
+    val list = arrayListOf(Item("A", false), Item("XY", false), Item("ABC", true), Item("Z", true))
+    val sortedList = list.sorted()
+    println(sortedList)
+}
+
+data class Item(val name: String, val flag: Boolean) : Comparable<Item> {
+    override fun compareTo(other: Item)
+            = compareValuesBy(this, other, { it.flag.not() }, { it.name })
+}
